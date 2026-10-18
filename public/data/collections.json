@@ -1,0 +1,36 @@
+{
+  "success": true,
+  "lastSync": "2026-10-18T09:51:06.314Z",
+  "collections": [
+    {
+      "id": "col-helmets",
+      "name": "Helmets",
+      "emoji": "🪖"
+    },
+    {
+      "id": "col-accessories",
+      "name": "Accessories",
+      "emoji": "✨"
+    },
+    {
+      "id": "col-bike-storage",
+      "name": "Bike storage",
+      "emoji": "🏍️"
+    },
+    {
+      "id": "col-bike-accessories",
+      "name": "Bike Accessories",
+      "emoji": "🛡️"
+    },
+    {
+      "id": "col-tools",
+      "name": "Tools",
+      "emoji": "🔧"
+    },
+    {
+      "id": "col-home",
+      "name": "Home",
+      "emoji": "🏺"
+    }
+  ]
+}

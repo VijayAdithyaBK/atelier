@@ -40,15 +40,17 @@ Open `http://localhost:3001` in your browser.
 
 ---
 
-## ✦ Deploying to GitHub Pages
+## ✦ Automated Notion Sync & GitHub Pages
 
-This project is built to run directly on GitHub Pages without requiring a build step:
+This project runs continuously on GitHub Pages with an automated GitHub Actions sync workflow:
 
-1. Push the repository to GitHub.
-2. In your repository settings, navigate to **Settings** → **Pages**.
-3. Under **Build and deployment**, select:
-   - **Source**: `Deploy from a branch`
-   - **Branch**: `main` (or `master`) / `/(root)`
-4. Save your changes. Your showcase will be live at `https://<username>.github.io/<repository-name>/`.
+1. **Automated Sync Engine (`.github/workflows/sync-notion.yml`)**:
+   - Runs automatically on schedule (every 6 hours) or via manual trigger (**Actions** → **Run workflow**).
+   - Securely queries your Notion database using GitHub Repository Secrets (`NOTION_TOKEN`, `NOTION_DATABASE_ID`).
+   - Generates static snapshot files in `data/` and `public/data/` (`shelves.json`, `collections.json`, `items.json`).
+   - Commits and pushes updates with `[skip ci]`.
 
-When hosted statically on GitHub Pages with no backend server, the application displays the clean editorial blank canvas. If an external API is configured via `window.SHELF_API_BASE`, it will stream live data accordingly.
+2. **Zero Server Dependency on GitHub Pages**:
+   - The frontend automatically loads the latest curated snapshot from `data/` if the local backend server is not running.
+   - Live hosted URL: [https://vijayadithyabk.github.io/atelier/](https://vijayadithyabk.github.io/atelier/)
+

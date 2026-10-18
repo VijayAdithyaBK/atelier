@@ -73,15 +73,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
-      const queryParam = forceRefresh ? '?refresh=true' : '';
+      const queryParam = forceRefresh ? `?refresh=true&_t=${Date.now()}` : '';
       const baseApi = window.SHELF_API_BASE || '/api';
       const shelvesUrl = `${baseApi}/shelves${queryParam}`;
       const colsUrl = `${baseApi}/collections${queryParam}`;
 
-      const [resShelves, resCols] = await Promise.all([
+      let [resShelves, resCols] = await Promise.all([
         fetch(shelvesUrl).catch(() => ({ ok: false })),
         fetch(colsUrl).catch(() => ({ ok: false }))
       ]);
+
+      // Static JSON snapshot fallback for GitHub Pages or static deployments
+      if (!resShelves || !resShelves.ok) {
+        const cacheBuster = forceRefresh ? `?_t=${Date.now()}` : '';
+        const [staticShelves, staticCols] = await Promise.all([
+          fetch(`data/shelves.json${cacheBuster}`).catch(() => ({ ok: false })),
+          fetch(`data/collections.json${cacheBuster}`).catch(() => ({ ok: false }))
+        ]);
+        if (staticShelves && staticShelves.ok) resShelves = staticShelves;
+        if (staticCols && staticCols.ok) resCols = staticCols;
+      }
 
       let hasLiveData = false;
 
@@ -116,7 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
           state.allItems = [];
         }
       } else {
-        // Zero stale data: if API fails or is static host, keep state clean
         state.shelves = [];
         state.activeShelves = [];
         state.allItems = [];
@@ -136,15 +146,15 @@ document.addEventListener('DOMContentLoaded', () => {
       if (topBarSyncBtn) {
         topBarSyncBtn.classList.remove('is-offline');
         if (hasLiveData) {
-          topBarSyncBtn.setAttribute('title', 'Live synced with Notion. Click to re-sync.');
-          topBarSyncBtn.setAttribute('aria-label', 'Live synced with Notion. Click to re-sync.');
+          topBarSyncBtn.setAttribute('title', 'Synced with Notion. Click to re-sync.');
+          topBarSyncBtn.setAttribute('aria-label', 'Synced with Notion. Click to re-sync.');
         } else {
           topBarSyncBtn.setAttribute('title', 'Canvas is empty. Click to check for arrivals.');
           topBarSyncBtn.setAttribute('aria-label', 'Canvas is empty. Click to check for arrivals.');
         }
       }
       if (syncLabel) {
-        syncLabel.textContent = hasLiveData ? 'Notion Live' : 'Clean Canvas';
+        syncLabel.textContent = hasLiveData ? 'Notion Synced' : 'Clean Canvas';
       }
     } catch (err) {
       console.warn('[ATELIER] Live connection notice:', err.message);
