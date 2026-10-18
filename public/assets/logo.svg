@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Premium Dark Architectural Squircle Base -->
+  <rect width="64" height="64" rx="15" fill="#0D0D0E" />
+  
+  <!-- Subtle Inner Border Highlight -->
+  <rect x="1" y="1" width="62" height="62" rx="14" fill="none" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1.5" />
+
+  <!-- Architectural Vault / Niche Arch (Bold, razor-sharp at 16px) -->
+  <path d="M20 46V28C20 21.3726 25.3726 16 32 16C38.6274 16 44 21.3726 44 28V46" 
+        fill="none" 
+        stroke="#FFFFFF" 
+        stroke-width="3.5" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" />
+
+  <!-- Floating Linear Plinth / Display Shelf Beam -->
+  <line x1="13" y1="46" x2="51" y2="46" 
+        stroke="#FFFFFF" 
+        stroke-width="3.5" 
+        stroke-linecap="round" />
+
+  <!-- Curated Iconic Artifact Sphere (Gold Accent) -->
+  <circle cx="32" cy="27" r="4.25" fill="#E5C158" />
+
+  <!-- Secondary Balance Point on Shelf -->
+  <circle cx="32" cy="40" r="2" fill="#FFFFFF" fill-opacity="0.9" />
+</svg>

@@ -1,0 +1,22 @@
+{
+  "name": "shelf",
+  "version": "1.0.0",
+  "description": "ATELIER — Curated storefront and minimalist objects showcase",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "atelier",
+    "shelf",
+    "storefront",
+    "minimalism",
+    "curation"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}

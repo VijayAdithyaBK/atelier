@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Secrets & Environment variables
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local Data Settings & Overrides
+data/shelf-settings.json
+
+# Operating System & IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Scratch & temporary screenshot captures
+screen.png
+screen_*.png
+fixed_screen_*.png
+home_screen_*.png

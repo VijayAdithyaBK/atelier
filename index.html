@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ATELIER — Curated Showcase</title>
+  <meta name="description" content="Personal curated shopping list and functional object showcase. Direct links to shop and explore.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg?v=2">
+  <link rel="apple-touch-icon" href="assets/logo.svg?v=2">
+</head>
+<body id="app-body">
+
+  <!-- ======================================================================
+       ONE-PAGE UI SHOWCASE
+       - NO navbar
+       - Multiple collection cards (Represent style)
+       - Each collection shows all the products under it (Console⁹ style)
+       ====================================================================== -->
+  <!-- Subtle Desktop Edge Back Button (pure arrow icon, visible on hover when in collection view) -->
+  <button type="button" class="edge-back-btn" id="edge-back-btn" aria-label="Back to all collections" title="Back to Collections">
+    <div class="edge-back-inner">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+    </div>
+  </button>
+
+  <!-- Top Title Bar: Brandmark Title + Collection Name Badge in the Same Line -->
+  <header class="site-top-bar" id="site-top-bar">
+    <div class="site-top-bar-inner">
+      <div class="brandmark-group">
+        <a href="#/" class="brandmark-title" id="brandmark-corner" aria-label="ATELIER Home">ATELIER</a>
+        <button type="button" class="top-bar-sync-btn" id="top-bar-sync-btn" title="Live synced with Notion database. Click to re-sync." aria-label="Notion live status. Click to re-sync.">
+          <span class="sync-dot"></span>
+        </button>
+      </div>
+      <span class="collection-badge" id="collection-badge" style="opacity: 0; pointer-events: none;" aria-live="polite"></span>
+    </div>
+    <div class="top-bar-blend-gradient" id="top-bar-blend-gradient" aria-hidden="true"></div>
+  </header>
+
+  <main class="page-container">
+
+    <!-- ====================================================================
+         VIEW 1: HOMESCREEN (COLLECTIONS CARDS ONLY - NO TITLE / SUBTITLE)
+         ==================================================================== -->
+    <div class="view-panel home-view" id="home-view">
+      <section class="collections-overview-section" id="collections-overview-section">
+        <div class="collections-cards-grid" id="collections-cards-grid">
+          <!-- Injected dynamically: Multiple collection cards side-by-side -->
+        </div>
+      </section>
+    </div>
+
+    <!-- ====================================================================
+         VIEW 2: COLLECTION PRODUCTS VIEW (Eases in on opening a collection)
+         ==================================================================== -->
+    <div class="view-panel collection-view" id="collection-view" style="display: none;">
+      <!-- Original Editorial Collection Header (Title & Curator Statement) -->
+      <header class="collection-header" id="collection-detail-header">
+        <h2 class="collection-title" id="collection-title-text">
+          <!-- Injected dynamically: e.g. Bags⁴ -->
+        </h2>
+        <p class="collection-sub" id="collection-sub-text">
+          <!-- Curator statement -->
+        </p>
+      </header>
+
+      <!-- 3-Column Minimalist Products Grid (Staggered ease-in animation) -->
+      <div class="collection-products-grid" id="collection-products-grid">
+        <!-- Injected dynamically: Product cards -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ======================================================================
+       PRODUCT QUICK LOOK LIGHTBOX MODAL
+       ====================================================================== -->
+  <div class="product-lightbox-backdrop" id="product-lightbox-backdrop" aria-hidden="true">
+    <div class="product-lightbox-card" id="product-lightbox-card" role="dialog" aria-modal="true" aria-labelledby="modal-prod-title">
+      <button type="button" class="lightbox-close-btn" id="lightbox-close-btn" aria-label="Close modal">✕</button>
+
+      <div class="lightbox-grid">
+        <!-- Photo Side -->
+        <div class="lightbox-photo-wrap">
+          <img src="" alt="" class="lightbox-photo-img" id="lightbox-photo-img">
+        </div>
+
+        <!-- Details Side -->
+        <div class="lightbox-details">
+          <span class="lightbox-store-tag" id="lightbox-store-tag">STORE</span>
+          <h2 class="lightbox-prod-title" id="modal-prod-title">PRODUCT TITLE</h2>
+          <div class="lightbox-price" id="lightbox-price">₹0</div>
+
+          <div class="lightbox-divider"></div>
+
+          <p class="lightbox-notes" id="lightbox-notes">Curator commentary and specifications.</p>
+
+          <div class="lightbox-meta-rows">
+            <div class="meta-row">
+              <span class="meta-key">COLLECTION</span>
+              <span class="meta-val" id="lightbox-category-val">BAGS</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-key">PLATFORM</span>
+              <span class="meta-val" id="lightbox-domain-val">AMAZON</span>
+            </div>
+          </div>
+
+          <a href="#" target="_blank" rel="noopener noreferrer" class="btn-lightbox-direct" id="btn-lightbox-direct">
+            <span>BUY ON OFFICIAL STORE</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <circle cx="50" cy="50" r="48" fill="#f4f1ea" stroke="#222" stroke-width="2"/>
+  <g fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Intricate mythical / crown warrior emblem matching screenshot -->
+    <path d="M50 16 L53 25 L62 21 L58 30 L67 31 L59 38 L68 44 L57 46 L63 56 L51 52 L50 63 L49 52 L37 56 L43 46 L32 44 L41 38 L33 31 L42 30 L38 21 L47 25 Z" fill="#242424"/>
+    <circle cx="50" cy="50" r="16" fill="#f4f1ea" stroke="#1a1a1a" stroke-width="2"/>
+    <circle cx="50" cy="50" r="10" fill="#1a1a1a"/>
+    <circle cx="50" cy="50" r="4" fill="#f4f1ea"/>
+    <!-- Radiating tribal rays -->
+    <path d="M50 66 L50 82 M40 76 L32 86 M60 76 L68 86 M30 62 L20 68 M70 62 L80 68 M26 48 L14 48 M74 48 L86 48"/>
+  </g>
+</svg>
